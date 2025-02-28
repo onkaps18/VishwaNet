@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div class="logo">VISHWANET</div>
+        <nav>
+            <a href="dashboard.html">Home</a>
+            <a href="profile.html" class="active">Profile</a>
+            <a href="">Group</a>
+            <a href="">Chat</a>
+            <a href="search.html">Search</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-content">
+                <div class="profile-left">
+                    <div class="profile-image-container">
+                        <img id="profileImage" src="tag.png" alt="Profile Picture">
+                        <div class="image-upload">
+                            <label for="imageInput">
+                                <i class="upload-icon">📷</i>
+                            </label>
+                            <input type="file" id="imageInput" accept="image/*" hidden>
+                        </div>
+                    </div>
+                    <h2 id="userName">Loading...</h2>
+                    <p id="userEmail">Loading...</p>
+                </div>
+
+                <div class="profile-right">
+                    <form id="profileForm" class="profile-form">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="college">College/University</label>
+                            <input type="text" id="college" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="branch">Branch/Major</label>
+                            <input type="text" id="branch" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">Year of Study</label>
+                            <select id="year" required>
+                                <option value="">Select Year</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                                <option value="5">5th Year</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Clubs & Activities</label>
+                            <div id="clubsList" class="clubs-list">
+                                <div class="club-input">
+                                    <input type="text" class="club-name" placeholder="Enter club name">
+                                    <button type="button" class="remove-club">×</button>
+                                </div>
+                            </div>
+                            <button type="button" id="addClub" class="add-club-btn">+ Add Club</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+                        </div>
+
+                        <button type="submit" class="save-btn">Save Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <script src="profile.js"></script>
+</body>
+</html>

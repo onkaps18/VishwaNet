@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      text-align: center;
+      background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1a 100%),
+                  url(pexels-felixmittermeier-956999.jpg) no-repeat center center/cover;
+      background-blend-mode: overlay;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Particle Background */
+    #particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    header {
+      background: rgba(10, 15, 25, 0.9);
+      width: 100%;
+      padding: 20px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header .logo {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(135deg, #00ffcc, #ff00ff, #00ccff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(0, 255, 204, 0.7); }
+      to { text-shadow: 0 0 20px rgba(255, 0, 255, 0.9); }
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin: 0 25px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      position: relative;
+      transition: all 0.4s ease;
+      text-transform: uppercase;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -8px;
+      left: 0;
+      background: linear-gradient(90deg, #00ffcc, #ff00ff);
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    nav a:hover {
+      color: #00ffcc;
+      text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+      transform: translateY(-3px);
+    }
+
+    .typing {
+      background: rgba(20, 30, 50, 0.7);
+      backdrop-filter: blur(15px);
+      padding: 50px 80px;
+      border-radius: 25px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                  inset 0 0 20px rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(0, 255, 204, 0.3);
+      animation: float 4s ease-in-out infinite,
+                 fadeIn 1s ease-in;
+      z-index: 2;
+    }
+
+    .typing h3 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: #b0b0b0;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .typing h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #00ffcc, #ff00ff, #00ccff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-right: 4px solid #ff00ff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      text-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+      animation: typing 3s steps(20) forwards 0.5s,
+                 blink 0.6s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #ff00ff; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+      .logo {
+        font-size: 1.8rem;
+      }
+      nav a {
+        margin: 0 15px;
+        font-size: 1rem;
+      }
+      .typing {
+        padding: 30px 50px;
+      }
+      .typing h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">VISHWANET</div>
+    <nav>
+      <a href="">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="">Group</a>
+      <a href="">Chat</a>
+      <a href="search.html">Search</a>
+    </nav>
+  </header>
+  <canvas id="particles"></canvas>
+  <div class="typing">
+    <h3>Welcome to</h3>
+    <h1>VISHWANET</h1>
+  </div>
+
+  <script>
+    // Simple Particle Animation
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const numberOfParticles = 100;
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 5 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.01;
+      }
+      draw() {
+        ctx.fillStyle = 'rgba(0, 255, 204, 0.7)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function init() {
+      for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+        if (particlesArray[i].size <= 0.2) {
+          particlesArray.splice(i, 1);
+          i--;
+          particlesArray.push(new Particle());
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
